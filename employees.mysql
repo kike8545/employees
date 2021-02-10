@@ -1,0 +1,91 @@
+/*
+SQLyog Professional v12.09 (64 bit)
+MySQL - 5.6.26 : Database - employees
+*********************************************************************
+*/
+
+/*!40101 SET NAMES utf8 */;
+
+/*!40101 SET SQL_MODE=''*/;
+
+/*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
+/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
+/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
+/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
+CREATE DATABASE /*!32312 IF NOT EXISTS*/`employees` /*!40100 DEFAULT CHARACTER SET utf8 */;
+
+USE `employees`;
+
+/*Table structure for table `employees` */
+
+DROP TABLE IF EXISTS `employees`;
+
+CREATE TABLE `employees` (
+  `id` int(10) NOT NULL AUTO_INCREMENT,
+  `id_identity_document_type` int(10) DEFAULT NULL,
+  `id_job_area` int(10) DEFAULT NULL,
+  `id_job_country` int(10) DEFAULT NULL,
+  `first_name` varchar(20) DEFAULT NULL,
+  `last_name` varchar(20) DEFAULT NULL,
+  `second_name` varchar(20) DEFAULT NULL,
+  `other_name` varchar(50) DEFAULT NULL,
+  `identification` varchar(20) DEFAULT NULL,
+  `email` varchar(300) DEFAULT NULL,
+  `date_entry` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `state` tinyint(1) DEFAULT NULL,
+  `registration_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+
+/*Data for the table `employees` */
+
+insert  into `employees`(`id`,`id_identity_document_type`,`id_job_area`,`id_job_country`,`first_name`,`last_name`,`second_name`,`other_name`,`identification`,`email`,`date_entry`,`state`,`registration_date`) values (1,1,1,1,'JEREMY','DE AVILA','ENRIQUE','PEREZ','1140845180','jeremy.deavila@cidenet.com.co','2021-02-07 16:04:53',1,'2021-02-07 16:04:53'),(2,1,1,1,'JEREMY','DE AVILA','ENRIQUE','PEREZ','1236547890','jeremy.deavila.1@cidenet.com.co','2021-02-08 11:59:37',1,'2021-02-08 11:59:37');
+
+/*Table structure for table `identity_document_type` */
+
+DROP TABLE IF EXISTS `identity_document_type`;
+
+CREATE TABLE `identity_document_type` (
+  `id` int(10) NOT NULL AUTO_INCREMENT,
+  `name` varchar(90) DEFAULT NULL,
+  `description` varchar(120) DEFAULT NULL,
+  `code` varchar(6) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=latin1;
+
+/*Data for the table `identity_document_type` */
+
+insert  into `identity_document_type`(`id`,`name`,`description`,`code`) values (1,'Cedula de Ciudadania','Cedula de Ciudadania','CC'),(2,'Cedula de Extranjería','Cedula de Extranjería','CE'),(3,'Tarjeta de identidad','Tarjeta de identidad','TI'),(4,'Nit','Nit','NIT'),(5,'RUT','RUT','RUT'),(6,'Pasaporte','Pasaporte','PP'),(7,'Permiso Especial','Permiso Especial','PE');
+
+/*Table structure for table `job_area` */
+
+DROP TABLE IF EXISTS `job_area`;
+
+CREATE TABLE `job_area` (
+  `id` int(10) NOT NULL AUTO_INCREMENT,
+  `name` varchar(90) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8;
+
+/*Data for the table `job_area` */
+
+insert  into `job_area`(`id`,`name`) values (1,'Administración'),(2,'Financiera'),(3,'Compras'),(4,'Infraestructura'),(5,'Operación'),(6,'Talento Humano'),(7,'Servicios Varios'),(8,'Tecnología');
+
+/*Table structure for table `job_country` */
+
+DROP TABLE IF EXISTS `job_country`;
+
+CREATE TABLE `job_country` (
+  `id` int(10) NOT NULL AUTO_INCREMENT,
+  `country` varchar(90) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+
+/*Data for the table `job_country` */
+
+insert  into `job_country`(`id`,`country`) values (1,'Colombia'),(2,'EE.UU');
+
+/*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
+/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
+/*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
+/*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
